@@ -13,3 +13,10 @@ $connectionParams = [
 ];
 $conn = DriverManager::getConnection($connectionParams);
 
+$queryBuilder = $conn->createQueryBuilder();
+
+$queryBuilder
+    ->select('bezeichnung')
+    ->from('symbol');
+
+$results = $queryBuilder->fetchAllAssociative();
