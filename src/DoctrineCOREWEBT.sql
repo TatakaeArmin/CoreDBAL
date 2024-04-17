@@ -32,23 +32,23 @@ CREATE TABLE round (
     fk_symbol2 INT,
     fk_player2 INT,
 
-    CONSTRAINT fk_match_tournament FOREIGN KEY (fk_id)
+    CONSTRAINT fk_round_tournament FOREIGN KEY (fk_id)
     REFERENCES tournament(pk_id)
     ON DELETE NO ACTION,
 
-    CONSTRAINT fk_match_player_1 FOREIGN KEY (fk_player1)
+    CONSTRAINT fk_round_player_1 FOREIGN KEY (fk_player1)
 		REFERENCES player(pk_id)
         ON DELETE NO ACTION,
 
-    CONSTRAINT fk_match_symbol_1 FOREIGN KEY (fk_symbol1)
+    CONSTRAINT fk_round_symbol_1 FOREIGN KEY (fk_symbol1)
 		REFERENCES symbol(pk_id)
         ON DELETE NO ACTION,
 
-     CONSTRAINT fk_match_symbol_2 FOREIGN KEY (fk_symbol2)
+     CONSTRAINT fk_round_symbol_2 FOREIGN KEY (fk_symbol2)
 		REFERENCES symbol(pk_id)
         ON DELETE NO ACTION,
 
-     CONSTRAINT fk_match_player_2 FOREIGN KEY (fk_player2)
+     CONSTRAINT fk_round_player_2 FOREIGN KEY (fk_player2)
 		REFERENCES player(pk_id)
         ON DELETE NO ACTION
 );
