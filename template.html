@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +10,21 @@
 
 <script>
 
-function openForm() {
-    document.getElementById("newData").style.display = "block";
-}
+    function openNewData() {
+        document.getElementById("newData").style.display = "block";
+    }
 
-function closeForm() {
-    document.getElementById("newData").style.display = "none";
-}
+    function closeNewData() {
+        document.getElementById("newData").style.display = "none";
+    }
+
+    function openDeleteData() {
+        document.getElementById("deleteData").style.display = "block";
+    }
+
+    function closeDeleteData() {
+        document.getElementById("deleteData").style.display = "none";
+    }
 
 </script>
 
@@ -33,6 +42,7 @@ function closeForm() {
 
                             <thead class="bg-gray-300 text-xs uppercase font-medium">
                                 <tr>
+                                    <th scope="col" class="px-4 py-2">Round</th>
                                     <th scope="col" class="px-4 py-2">Player 1</th>
                                     <th scope="col" class="px-4 py-2">Symbol</th>
                                     <th scope="col" class="px-4 py-2">Date</th>
@@ -52,29 +62,57 @@ function closeForm() {
 
                     </div>
 
-                    <div class="flex flex-col mt-12 items-start">
+                    <div class="flex flex-row mt-12 items-start">
+                        <div class="flex flex-col items-start mr-4">
 
-                        <button onclick="openForm()" class="x-auto border bg-white text-gray-900 rounded-lg p-2">
-                            New Round
-                        </button>
-
-                        <form method="post" action="./newData.php" id="newData" name="newData" 
-                        class="flex flex-wrap text-white hidden mt-4 space-y-4">   
-
-                            <div class="flex flex-col text-gray-800 space-y-2">
-                                <input class="rounded" id="player1" name="player1" placeholder="Player 1"/>
-                                <input class="rounded" id="symbol1" name="symbol1" placeholder="Symbol 1"/>
-                                <input class="rounded" id="date" name="date" placeholder="yyyy-mm-dd"/>
-                                <input class="rounded" id="time" name="time" placeholder="hh:mm:ss"/>
-                                <input class="rounded" id="symbol2" name="symbol2" placeholder="Symbol 2"/>
-                                <input class="rounded" id="player2" name="player2" placeholder="Player 2"/>
-                            </div>
-
-                            <button onclick="closeForm()" class="x-auto border bg-white text-gray-900 rounded-lg p-2">
-                                Save Entry
+                            <button onclick="openNewData()" class="x-auto border bg-white text-gray-900 rounded-lg p-2">
+                                New Round
                             </button>
 
-                        </form>
+                            <form method="post" action="./newData.php" id="newData" name="newData"
+                                class="flex flex-wrap text-white hidden mt-4 space-y-4">
+
+                                <div class="flex flex-col text-gray-800 space-y-2">
+                                    <input class="rounded" id="round" name="round" placeholder="round" />
+                                    <input class="rounded" id="player1" name="player1" placeholder="Player 1" />
+                                    <input class="rounded" id="symbol1" name="symbol1" placeholder="Symbol 1" />
+                                    <input class="rounded" id="date" name="date" placeholder="yyyy-mm-dd" />
+                                    <input class="rounded" id="time" name="time" placeholder="hh:mm:ss" />
+                                    <input class="rounded" id="symbol2" name="symbol2" placeholder="Symbol 2" />
+                                    <input class="rounded" id="player2" name="player2" placeholder="Player 2" />
+                                </div>
+
+                                <button onclick="closeNewData()"
+                                    class="x-auto border bg-white text-gray-900 rounded-lg p-2">
+                                    Save Entry
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                        <div class="flex flex-col items-start ml-4">
+
+                            <button onclick="openDeleteData()"
+                                class="x-auto border bg-white text-gray-900 rounded-lg p-2">
+                                Delete Round
+                            </button>
+
+                            <form method="post" action="./deleteData.php" id="deleteData" name="deleteData"
+                                class="flex flex-wrap text-white hidden mt-4 space-y-4">
+
+                                <div class="flex flex-col text-gray-800 space-y-2">
+                                    <input class="rounded" id="round" name="round" placeholder="round" />
+                                </div>
+
+                                <button onclick="closeDeleteData()"
+                                    class="x-auto border bg-white text-gray-900 rounded-lg p-2">
+                                    Delete Entry
+                                </button>
+
+                            </form>
+
+                        </div>
 
                     </div>
 
@@ -85,4 +123,5 @@ function closeForm() {
     </div>
 
 </body>
+
 </html>

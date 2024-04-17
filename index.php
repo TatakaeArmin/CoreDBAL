@@ -17,7 +17,7 @@ $conn = DriverManager::getConnection($connectionParams);
 $queryBuilder = $conn->createQueryBuilder();
 
 $queryBuilder
-    ->select('p1.name AS player1', 's1.bezeichnung AS symbol1', 
+    ->select('r.pk_id AS round, p1.name AS player1', 's1.bezeichnung AS symbol1', 
             'r.date', 'r.time', 
             's2.bezeichnung AS symbol2', 'p2.name AS player2')
     ->from('round', 'r')
