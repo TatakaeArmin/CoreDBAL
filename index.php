@@ -14,10 +14,6 @@ $connectionParams = [
 
 $conn = DriverManager::getConnection($connectionParams);
 
-$row = file_get_contents('./row.html');
-$template = file_get_contents('./template.html');
-
-
 $queryBuilder = $conn->createQueryBuilder();
 
 $queryBuilder
@@ -32,12 +28,16 @@ $queryBuilder
 
 $results = $queryBuilder->fetchAllAssociative();
 
-//print_r($results);
-//print($template);
+$row = file_get_contents('./row.html');
+
+$template = file_get_contents('./template.html');
+
+$keys = array_keys($results[0]);
 
 $done = '';
 
-$keys = array_keys($results[0]);
+//print_r($results);
+//print($template);
 
 for ($i = 0; $i < sizeof($results); $i++) {
     for ($j = 0; $j < sizeof($keys); $j++) {
@@ -49,6 +49,8 @@ for ($i = 0; $i < sizeof($results); $i++) {
     }
     $done .= $info;
 }
+
+//echo $done;
 
 $template = str_replace('{{ row }}', $done, $template);
 
