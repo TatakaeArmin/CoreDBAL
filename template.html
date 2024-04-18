@@ -28,19 +28,19 @@
 
 </script>
 
-<body>
+<body class="bg-gray-900">
 
-    <div class="flex flex-col items-center justify-center w-screen min-h-screen bg-gray-900 py-10">
+    <div class="flex flex-col items-center bg-gray-900 py-10">
 
-        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-200 font-medium">TurnUp Tournament</h1>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white font-medium">TurnUp Tournament</h1>
         <div class="flex flex-col mt-6">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="shadow overflow-hidden sm:rounded-lg">
+                    <div class="shadow overflow-x-auto sm:rounded-lg">
 
-                        <table class="min-w-full divide-y divide-gray-200">
-
-                            <thead class="bg-gray-300 text-xs uppercase font-medium">
+                      <!--  <table class="min-w-full divide-y divide-gray-200"> -->
+                      <table class="table-auto bg-white shadow-md rounded-lg overflow-hidden">
+                            <thead class="bg-blue-500 text-white text-xs uppercase font-medium">
                                 <tr>
                                     <th scope="col" class="px-4 py-2">Round</th>
                                     <th scope="col" class="px-4 py-2">Player 1</th>
@@ -62,18 +62,17 @@
 
                     </div>
 
-                    <div class="flex flex-row mt-12 items-start">
-                        <div class="flex flex-col items-start mr-4">
+                    <div class=" flex flex-row mt-12 items-center items-baseline justify-center">
+                         <div class="flex flex-col mr-4">
 
-                            <button onclick="openNewData()" class="x-auto border bg-white text-gray-900 rounded-lg p-2">
+                            <button onclick="openNewData()" class="x-auto border lg:w-32 md:w-48 sm:w-64 bg-white text-gray-900 rounded-lg p-2">
                                 New Round
                             </button>
 
                             <form method="post" action="./newData.php" id="newData" name="newData"
                                 class="flex flex-wrap text-white hidden mt-4 space-y-4">
 
-                                <div class="flex flex-col text-gray-800 space-y-2">
-                                    <input class="rounded" id="round" name="round" placeholder="round" />
+                                <div class="flex flex-col lg:w-32 md:w-48 sm:w-64 text-gray-800 space-y-2">
                                     <input class="rounded" id="player1" name="player1" placeholder="Player 1" />
                                     <input class="rounded" id="symbol1" name="symbol1" placeholder="Symbol 1" />
                                     <input class="rounded" id="date" name="date" placeholder="yyyy-mm-dd" />
@@ -81,32 +80,29 @@
                                     <input class="rounded" id="symbol2" name="symbol2" placeholder="Symbol 2" />
                                     <input class="rounded" id="player2" name="player2" placeholder="Player 2" />
                                 </div>
-
                                 <button onclick="closeNewData()"
-                                    class="x-auto border bg-white text-gray-900 rounded-lg p-2">
+                                    class="x-auto lg:w-32 md:w-48 sm:w-64 bg-blue-500 text-white rounded-lg p-2">
                                     Save Entry
                                 </button>
-
                             </form>
-
                         </div>
 
-                        <div class="flex flex-col items-start ml-4">
+                        <div class="flex flex-col mr-4">
 
                             <button onclick="openDeleteData()"
-                                class="x-auto border bg-white text-gray-900 rounded-lg p-2">
+                                class="x-auto border lg:w-32 md:w-48 sm:w-64 bg-white text-gray-900 rounded-lg p-2">
                                 Delete Round
                             </button>
 
                             <form method="post" action="./deleteData.php" id="deleteData" name="deleteData"
                                 class="flex flex-wrap text-white hidden mt-4 space-y-4">
 
-                                <div class="flex flex-col text-gray-800 space-y-2">
-                                    <input class="rounded" id="round" name="round" placeholder="round" />
+                                <div class="flex flex-col text-gray-800 lg:w-32 md:w-48 sm:w-64 space-y-2">
+                                    <input class="rounded" id="round" name="round" placeholder="Round" />
                                 </div>
 
                                 <button onclick="closeDeleteData()"
-                                    class="x-auto border bg-white text-gray-900 rounded-lg p-2">
+                                    class="x-auto lg:w-32 md:w-48 sm:w-64 bg-blue-500 text-white rounded-lg p-2">
                                     Delete Entry
                                 </button>
 
