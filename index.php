@@ -1,18 +1,6 @@
 <?php
 
-require_once "./vendor/autoload.php";
-use Doctrine\DBAL\DriverManager;
-
-
-$connectionParams = [
-    'dbname' => 'tournaments',
-    'user' => 'root',
-    'password' => '',
-    'host' => 'localhost',
-    'driver' => 'pdo_mysql'
-];
-
-$conn = DriverManager::getConnection($connectionParams);
+$conn = require "./connection.php";
 
 $queryBuilder = $conn->createQueryBuilder();
 
@@ -28,16 +16,26 @@ $queryBuilder
 
 $results = $queryBuilder->fetchAllAssociative();
 
+$queryBuilder
+    ->select('s.bezeichnung')
+    ->from('symbol', 's');
+
+$allSymbols = $queryBuilder->fetchAllAssociative();
+$allSymbols = array_unique($allSymbols, SORT_REGULAR);
+
+
+$symbols = file_get_contents('./symbols.html');
+
 $row = file_get_contents('./row.html');
 
 $template = file_get_contents('./template.html');
 
 $keys = array_keys($results[0]);
 
-$done = '';
+$rowDone = '';
 
-//print_r($results);
-//print($template);
+$symbDone = '';
+
 
 for ($i = 0; $i < sizeof($results); $i++) {
     for ($j = 0; $j < sizeof($keys); $j++) {
@@ -47,11 +45,22 @@ for ($i = 0; $i < sizeof($results); $i++) {
             $info = str_replace('{{ ' . $keys[$j] . ' }}', $results[$i][$keys[$j]], $info);
         }
     }
-    $done .= $info;
+    $rowDone .= $info;
 }
 
-//echo $done;
 
-$template = str_replace('{{ row }}', $done, $template);
+for ($i = 0; $i < sizeof($allSymbols); $i++) {
+    
+    $info = str_replace('{{ symbol }}', $allSymbols[$i]['bezeichnung'], $symbols);
+    
+    $symbDone .= $info;
+
+}
+
+
+$template = str_replace('{{ row }}', $rowDone, $template);
+
+$template = str_replace('{{ symbols }}', $symbDone, $template);
 
 echo $template;
+

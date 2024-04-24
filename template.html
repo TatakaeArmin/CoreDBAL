@@ -26,6 +26,29 @@
         document.getElementById("deleteData").style.display = "none";
     }
 
+    function escape(htmlStr) {
+        return htmlStr.replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#39;");
+
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        let player1 = document.getElementById('player1');
+        let player2 = document.getElementById('player2');
+
+        let player1HTML = player1.innerHTML;
+        let player2HTML = player2.innerHTML;
+
+        let escaped1= escape(player1HTML);
+        let escaped2= escape(player2HTML);
+    
+        player1.innerHTML = escaped1;
+        player2.innerHTML = escaped2;
+    });
+
 </script>
 
 <body class="bg-gray-900">
@@ -74,10 +97,17 @@
 
                                 <div class="flex flex-col lg:w-32 md:w-48 sm:w-64 text-gray-800 space-y-2">
                                     <input class="rounded" id="player1" name="player1" placeholder="Player 1" />
-                                    <input class="rounded" id="symbol1" name="symbol1" placeholder="Symbol 1" />
+
+                                    <select class="rounded" id="symbol1" name="symbol1">
+                                        {{ symbols }}
+                                    </select>
+
+                                    <!-- <input class="rounded" id="symbol1" name="symbol1" placeholder="Symbol 1" /> -->
                                     <input class="rounded" id="date" name="date" placeholder="yyyy-mm-dd" />
                                     <input class="rounded" id="time" name="time" placeholder="hh:mm:ss" />
-                                    <input class="rounded" id="symbol2" name="symbol2" placeholder="Symbol 2" />
+                                    <select class="rounded" id="symbol2" name="symbol2">
+                                        {{ symbols }}
+                                    </select>
                                     <input class="rounded" id="player2" name="player2" placeholder="Player 2" />
                                 </div>
                                 <button onclick="closeNewData()"
