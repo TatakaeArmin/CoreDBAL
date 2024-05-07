@@ -21,7 +21,7 @@ $queryBuilder
     ->from('symbol', 's');
 
 $allSymbols = $queryBuilder->fetchAllAssociative();
-$allSymbols = array_unique($allSymbols, SORT_REGULAR);
+$allSymbols = array_values(array_unique($allSymbols, SORT_REGULAR));
 
 
 $symbols = file_get_contents('./symbols.html');
@@ -48,9 +48,8 @@ for ($i = 0; $i < sizeof($results); $i++) {
     $rowDone .= $info;
 }
 
-
 for ($i = 0; $i < sizeof($allSymbols); $i++) {
-    
+
     $info = str_replace('{{ symbol }}', $allSymbols[$i]['bezeichnung'], $symbols);
     
     $symbDone .= $info;

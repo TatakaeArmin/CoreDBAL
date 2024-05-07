@@ -26,29 +26,6 @@
         document.getElementById("deleteData").style.display = "none";
     }
 
-    function escape(htmlStr) {
-        return htmlStr.replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#39;");
-
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        let player1 = document.getElementById('player1');
-        let player2 = document.getElementById('player2');
-
-        let player1HTML = player1.innerHTML;
-        let player2HTML = player2.innerHTML;
-
-        let escaped1= escape(player1HTML);
-        let escaped2= escape(player2HTML);
-    
-        player1.innerHTML = escaped1;
-        player2.innerHTML = escaped2;
-    });
-
 </script>
 
 <body class="bg-gray-900">
